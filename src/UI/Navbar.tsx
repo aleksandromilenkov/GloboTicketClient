@@ -121,7 +121,7 @@ const Navbar = (props: Props) => {
     return (
       <StyledHeaderMenu>
         <LogoContainer>
-          <Link to='/home'><Logo src="https://localhost:7209/resources/CarSellersLogo.png" alt="logo" /></Link>
+          <Link to='/home'><Logo src="" alt="logo" /></Link>
         </LogoContainer>
         <BurgerMenu isOpen={isOpen} onClick={() => setIsOpen(!isOpen)}>
           <div />
@@ -130,7 +130,10 @@ const Navbar = (props: Props) => {
         </BurgerMenu>
         <MenuItems isOpen={isOpen}>
           <NavLink to={"/home"} onClick={handleNavLinkClick}>Home</NavLink>
-          <NavLink to={"/search"} onClick={handleNavLinkClick}>Search</NavLink>
+          <NavLink to={"/events"} onClick={handleNavLinkClick}>Events</NavLink>
+          <NavLink to={"/categories"} onClick={handleNavLinkClick}>Categories</NavLink>
+          <NavLink to={"/addCategory"} onClick={handleNavLinkClick}>Create Category</NavLink>
+          <NavLink to={"/sales"} onClick={handleNavLinkClick}>Sales</NavLink>
         </MenuItems>
       </StyledHeaderMenu>
   )

@@ -6,6 +6,10 @@ import { Toaster } from "react-hot-toast";
 import HomePage from "./Pages/HomePage";
 import PageNotFound from "./Pages/PageNotFound";
 import AppLayout from "./UI/AppLayout";
+import EventsPage from "./Pages/EventsPage";
+import CategoriesPage from "./Pages/CategoriesPage";
+import AddCategoryPage from "./Pages/AddCategoryPage";
+import SalesPage from "./Pages/SalesPage";
 type Props = {};
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -24,6 +28,10 @@ const App = (props: Props) => {
     <Route element={<AppLayout />}>
       <Route index element={<Navigate replace to="home" />} />
       <Route path="home" element={<HomePage />} />
+      <Route path="events" element={<EventsPage />} />
+      <Route path="categories" element={<CategoriesPage />} />
+      <Route path="addCategory" element={<AddCategoryPage />} />
+      <Route path="sales" element={<SalesPage />} />
       <Route path="*" element={<PageNotFound />} />
       </Route>
     </Routes>
