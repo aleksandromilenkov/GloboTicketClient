@@ -1,5 +1,6 @@
 import React from 'react'
 import useCategoriesWithEvents from '../Components/Categories/useCategoriesWithEvents'
+import CategoriesList from '../Components/Categories/CategoriesList';
 
 type Props = {}
 
@@ -13,7 +14,7 @@ const CategoriesPage = (props: Props) => {
       if (error) return <p>Error loading data.</p>;
     
       return (
-        <div>
+        <div style={{paddingLeft:"1rem"}}>
           <h1>Categories Page</h1>
           <label>
             <input
@@ -21,13 +22,9 @@ const CategoriesPage = (props: Props) => {
               checked={includeHistory}
               onChange={handleCheckboxChange}
             />
-            Include History
+            Include past events?
           </label>
-          <ul>
-            {categoriesWithEvents?.map((category: any) => (
-              <li key={category.id}>{category.name}</li>
-            ))}
-          </ul>
+          <CategoriesList categoriesWithEvents={categoriesWithEvents}/>
         </div>
       );
     };

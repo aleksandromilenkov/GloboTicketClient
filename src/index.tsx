@@ -4,6 +4,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import GlobalStyles from './UI/GlobalStyles';
 import ErrorFallback from './Utils/ErrorFallback';
 import App from './App';
+import "./index.css"
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

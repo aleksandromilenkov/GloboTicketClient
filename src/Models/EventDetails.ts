@@ -5,9 +5,9 @@ export type EventDetailsModel = {
     name: string,
     price: number,
     artist: string,
-    description: string,
+    description?: string,
     categoryId: string,
     date: Date,
-    imageUrl: string,
-    category: CategoryModel
+    imageUrl?: string,
+    category?: CategoryModel
 }
