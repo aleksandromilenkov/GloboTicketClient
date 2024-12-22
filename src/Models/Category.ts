@@ -6,7 +6,7 @@ export type CategoryModel = {
 }
 
 export type CreateCategoryModel = {
-    name:string,
+    name :string,
 }
 
 export type CategoryModelWithEvent = {

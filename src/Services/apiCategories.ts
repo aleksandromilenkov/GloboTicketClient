@@ -28,6 +28,7 @@ export const createCategoryAPI = async(categoryToCreate: CreateCategoryModel) =>
             },
             body: JSON.stringify(categoryToCreate)
         });
+        return resp.json();
     }catch(error:any){
         throw new Error(error.response?.data.message || error.message);
     }

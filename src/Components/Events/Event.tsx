@@ -1,5 +1,5 @@
 import React from 'react'
-import { EventListModel } from '../../Models/EventList'
+import { EventListModel } from '../../Models/Event'
 import { EventDetailsModel } from '../../Models/EventDetails'
 
 

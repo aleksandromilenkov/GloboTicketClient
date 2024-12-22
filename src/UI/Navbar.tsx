@@ -1,28 +1,35 @@
 import React, { useState } from 'react'
 import styled from 'styled-components';
 import { Link, NavLink as RouterNavLink, useNavigate } from "react-router-dom";
+import { FaHome, FaUserAlt, FaHamburger,  FaListAlt, FaPlus, FaShoppingCart } from 'react-icons/fa'; // Example from FontAwesome
+import { MdEvent } from 'react-icons/md'; // Example from Material Design
+import { FiMenu } from 'react-icons/fi'; // Example from Feather
 
 type Props = {};
 
 const StyledHeaderMenu = styled.nav`
   display: flex;
+  flex-direction:column;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background-color: #282c34;
+  background-color: #2d8f88;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 200px;
 `;
 
 const NavLink = styled(RouterNavLink)`
   color: white;
+  width:100%;
   text-decoration: none;
   padding: 0.5rem 1rem;
   border-radius: 4px;
   transition: background-color 0.3s;
-
+  display:flex;
+  gap:1rem;
   &.active {
-    background-color: #61dafb;
-    color: #282c34;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
   }
 
   &:hover {
@@ -75,40 +82,16 @@ const MenuItems = styled.div<{ isOpen: boolean }>`
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: absolute;
-  top: 60px;
-  left: 0;
-  background-color: #282c34;
   width: 100%;
   transition: max-height 0.3s ease;
   overflow: hidden;
-  max-height: ${({ isOpen }) => (isOpen ? "300px" : "0")};
-  z-index: 1;
+  width:200px;
 
   @media (min-width: 769px) {
-    display: flex;
-    position: static;
-    flex-direction: row;
-    max-height: none;
-    justify-content: space-around;
+    
   }
 `;
 
-const LogoContainer = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const Logo = styled.img`
-  width: 150px;
-  height: auto;
-  max-width: 100%;
-  border-radius: 50%;
-
-  @media (max-width: 768px) {
-    width: 120px;
-  }
-`;
 
 const Navbar = (props: Props) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -120,20 +103,17 @@ const Navbar = (props: Props) => {
   
     return (
       <StyledHeaderMenu>
-        <LogoContainer>
-          <Link to='/home'><Logo src="" alt="logo" /></Link>
-        </LogoContainer>
         <BurgerMenu isOpen={isOpen} onClick={() => setIsOpen(!isOpen)}>
           <div />
           <div />
           <div />
         </BurgerMenu>
         <MenuItems isOpen={isOpen}>
-          <NavLink to={"/home"} onClick={handleNavLinkClick}>Home</NavLink>
-          <NavLink to={"/events"} onClick={handleNavLinkClick}>Events</NavLink>
-          <NavLink to={"/categories"} onClick={handleNavLinkClick}>Categories</NavLink>
-          <NavLink to={"/addCategory"} onClick={handleNavLinkClick}>Create Category</NavLink>
-          <NavLink to={"/sales"} onClick={handleNavLinkClick}>Sales</NavLink>
+          <NavLink to={"/home"} onClick={handleNavLinkClick} ><FaHome /> Home</NavLink>
+          <NavLink to={"/events"} onClick={handleNavLinkClick}><MdEvent /> Events</NavLink>
+          <NavLink to={"/categories"} onClick={handleNavLinkClick}><FaListAlt /> Categories</NavLink>
+          <NavLink to={"/addCategory"} onClick={handleNavLinkClick}><FaPlus /> Create Category</NavLink>
+          <NavLink to={"/sales"} onClick={handleNavLinkClick}><FaShoppingCart /> Sales</NavLink>
         </MenuItems>
       </StyledHeaderMenu>
   )
