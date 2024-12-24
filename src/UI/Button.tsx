@@ -14,8 +14,7 @@ interface ButtonProps {
 const sizes = {
   small: css`
     font-size: 1.2rem;
-    padding: 0.4rem 0.8rem;
-    text-transform: uppercase;
+    padding: 0.8rem 1rem;
     font-weight: 600;
     text-align: center;  
   @media (max-width: 670px) {
@@ -46,11 +45,12 @@ const sizes = {
 // Define the styles for each variation
 const variations = {
   primary: css`
-    color: blue;
-    background-color: white;
+    color: white;
+    background-color: #2d8f88;
 
     &:hover {
-      background-color: green;
+      background-color: #39f6e9;;
+    color: #333;
     }
   `,
   secondary: css`

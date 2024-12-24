@@ -5,7 +5,8 @@ type Props = {}
 
 const AddCategoryPage = (props: Props) => {
   return (
-    <div>AddCategoryPage
+    <div style={{padding:"1rem"}}>
+        <h1>New Category</h1>
         <CreateCategory/>
     </div>
   )

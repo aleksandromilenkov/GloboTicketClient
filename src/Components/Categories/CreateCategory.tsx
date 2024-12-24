@@ -42,7 +42,7 @@ const CreateCategory = (props: Props) => {
           </FormField>
     
           <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <Button type="submit">Create Category</Button>
+            <Button type="submit" variation='primary' size='small'>Create Category</Button>
           </div>
         </form>
     
