@@ -10,7 +10,8 @@ const EventGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr); 
   padding: 10px; 
-  background-color: #f0f0f0; 
+  background-color: #f0f0f0;
+  margin-top:10px;
 `
 const GridItem = styled.div`
   padding: 10px;
@@ -24,15 +25,22 @@ const GridItemHeadColumn = styled.div`
   font-weight:bold;
   font-size:1.1rem;
 `;
+const GridItemImg = styled.img`
+    width:100%;
+
+`;
 const EventList = (props: Props) => {
     const [isLoading, events, error] = useEvents();
   return (
     <div>
          <EventGrid>
-
+            <GridItemHeadColumn></GridItemHeadColumn>
+         <GridItemHeadColumn >Event Name</GridItemHeadColumn>
+            <GridItemHeadColumn >Event Date</GridItemHeadColumn>
+            <GridItemHeadColumn></GridItemHeadColumn>
             {events.map((e:EventListModel)=>{
                 return <>
-                    <GridItem><img src={e.imageUrl} alt={e.name}/></GridItem>
+                    <GridItem><GridItemImg src={e.imageUrl} alt={e.name}/></GridItem>
                     <GridItem>{e.name}</GridItem>
                     <GridItem>{new Date(e.date).toLocaleDateString()}</GridItem>
                     <GridItem><Button><FaEdit/></Button></GridItem>
