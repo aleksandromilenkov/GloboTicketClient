@@ -1,6 +1,6 @@
 #GloboTicketClient
 
-This is the Client for the GloboTicket 
+This is the Client for the GloboTicket Clean Architecture Backend
 
 # Getting Started with Create React App
 
