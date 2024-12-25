@@ -1,3 +1,5 @@
+import { EventCreateModel } from "../Models/Event";
+
 const api = "https://localhost:7052/api/Event/";
 export const getEventsAPI = async () =>{
     try{
@@ -15,7 +17,7 @@ export const getEventByIdAPI = async (eventId: number) =>{
         throw new Error(error.response?.data.message || error.message);
     }
 }
-export const createEventAPI = async(eventToCreate: Event) => {
+export const createEventAPI = async(eventToCreate: EventCreateModel) => {
     try{
         const token = localStorage.getItem("GloboTicketToken");
         const resp = await fetch(api,{

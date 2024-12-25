@@ -16,6 +16,7 @@ const ModalBackground = styled.div`
 
 const ModalContainer = styled.div`
   background: white;
+  position:relative;
   width: 500px;
   max-width: 90%;
   padding: 20px;
@@ -24,12 +25,12 @@ const ModalContainer = styled.div`
 `;
 
 const CloseButton = styled.button`
-  background: transparent;
+  background: white;
   border: none;
   font-size: 1.5rem;
   position: absolute;
-  top: 10px;
-  right: 20px;
+  top: -20px;
+  right: -30px;
   cursor: pointer;
 `;
 

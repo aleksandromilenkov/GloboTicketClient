@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Button from '../../UI/Button'
 import styled from 'styled-components';
 import Modal from '../../UI/Modal';
+import CreateEventForm from './CreateEventForm';
 
 type Props = {}
 
@@ -28,21 +29,7 @@ const EventActions = (props: Props) => {
         <Button>Export Events</Button>
         <Modal show={showModal} onClose={handleCloseModal}>
         <h2>Create New Event</h2>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="eventName">Event Name</label>
-            <input type="text" id="eventName" required />
-          </div>
-          <div>
-            <label htmlFor="eventDate">Event Date</label>
-            <input type="date" id="eventDate" required />
-          </div>
-          <div>
-            <label htmlFor="eventImage">Event Image</label>
-            <input type="file" id="eventImage" />
-          </div>
-          <Button type="submit">Create Event</Button>
-        </form>
+        <CreateEventForm/>
       </Modal>
     </EventActionsContainer>
   )

@@ -1,9 +1,10 @@
 import { CategoryModel, CreateCategoryModel } from "../Models/Category";
 
 const api = "https://localhost:7052/api/Category/";
+
 export const getCategoriesAPI = async () =>{
     try{
-        const categories = await fetch(api);
+        const categories = await fetch(api+'all');
         return await categories?.json();
     }catch(error:any){
         throw new Error(error.response?.data.message || error.message);

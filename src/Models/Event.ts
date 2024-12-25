@@ -5,3 +5,13 @@ export type EventListModel = {
     date: Date,
     imageUrl: string
 }
+
+export type EventCreateModel = {
+    name: string,
+    imageUrl?: string,
+    price: number,
+    date: Date,
+    artist?: string,
+    description?: string,
+    categoryId: string,
+}
