@@ -10,6 +10,7 @@ import EventsPage from "./Pages/EventsPage";
 import CategoriesPage from "./Pages/CategoriesPage";
 import AddCategoryPage from "./Pages/AddCategoryPage";
 import SalesPage from "./Pages/SalesPage";
+import EventDetailsPage from "./Pages/EventDetailsPage";
 type Props = {};
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -29,6 +30,7 @@ const App = (props: Props) => {
       <Route index element={<Navigate replace to="home" />} />
       <Route path="home" element={<HomePage />} />
       <Route path="events" element={<EventsPage />} />
+      <Route path="events/:eventId" element={<EventDetailsPage />} />
       <Route path="categories" element={<CategoriesPage />} />
       <Route path="addCategory" element={<AddCategoryPage />} />
       <Route path="sales" element={<SalesPage />} />

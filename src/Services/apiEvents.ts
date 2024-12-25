@@ -9,7 +9,7 @@ export const getEventsAPI = async () =>{
         throw new Error(error.response?.data.message || error.message);
     }
 }
-export const getEventByIdAPI = async (eventId: number) =>{
+export const getEventByIdAPI = async (eventId: string) =>{
     try{
         const events = await fetch(api + eventId);
         return events;

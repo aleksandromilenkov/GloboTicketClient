@@ -4,6 +4,7 @@ import useEvents from './useEvents'
 import Button from '../../UI/Button'
 import { FaEdit } from 'react-icons/fa';
 import { EventListModel } from '../../Models/Event';
+import { useNavigate } from 'react-router-dom';
 
 type Props = {}
 const EventGrid = styled.div`
@@ -31,6 +32,7 @@ const GridItemImg = styled.img`
 `;
 const EventList = (props: Props) => {
     const [isLoading, events, error] = useEvents();
+    const navigate = useNavigate();
   return (
     <div>
          <EventGrid>
@@ -43,7 +45,7 @@ const EventList = (props: Props) => {
                     <GridItem><GridItemImg src={e.imageUrl} alt={e.name}/></GridItem>
                     <GridItem>{e.name}</GridItem>
                     <GridItem>{new Date(e.date).toLocaleDateString()}</GridItem>
-                    <GridItem><Button><FaEdit/></Button></GridItem>
+                    <GridItem><Button><FaEdit onClick={()=> navigate(`/events/${e.eventId}`)}/></Button></GridItem>
                 </>
             })}
         </EventGrid>
