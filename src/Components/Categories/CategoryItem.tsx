@@ -42,23 +42,23 @@ const CategoryItem = (props: Props) => {
     const {categoryName, categoryEvents, categoryId} = props;
   return (
     <CategoryItemContainer>
-    <CategoryItemLi>
-        <h4>{categoryName}</h4>
-    </CategoryItemLi>
-    <EventGrid>
-    <GridItemHeadColumn>Event Name</GridItemHeadColumn>
-  <GridItemHeadColumn>Event Date</GridItemHeadColumn>
-  <GridItemHeadColumn>Artist</GridItemHeadColumn>
-  <GridItemHeadColumn>Price</GridItemHeadColumn>
-    {categoryEvents.map(ce=>{
-        return <>
-            <GridItem>{ce.name}</GridItem>
-            <GridItem>{new Date(ce.date).toLocaleDateString()}</GridItem>
-            <GridItem>{ce.artist}</GridItem>
-            <GridItem>${ce.price.toFixed(2)}</GridItem>
-        </>
-    })}
-    </EventGrid>
+        <CategoryItemLi>
+            <h4>{categoryName}</h4>
+        </CategoryItemLi>
+        <EventGrid>
+            <GridItemHeadColumn>Event Name</GridItemHeadColumn>
+            <GridItemHeadColumn>Event Date</GridItemHeadColumn>
+            <GridItemHeadColumn>Artist</GridItemHeadColumn>
+            <GridItemHeadColumn>Price</GridItemHeadColumn>
+            {categoryEvents.map(ce=>{
+                return <>
+                    <GridItem>{ce.name}</GridItem>
+                    <GridItem>{new Date(ce.date).toLocaleDateString()}</GridItem>
+                    <GridItem>{ce.artist}</GridItem>
+                    <GridItem>${ce.price.toFixed(2)}</GridItem>
+                </>
+            })}
+        </EventGrid>
     </CategoryItemContainer>
   )
 }

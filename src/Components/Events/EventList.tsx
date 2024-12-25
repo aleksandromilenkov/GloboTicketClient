@@ -38,7 +38,7 @@ const EventList = (props: Props) => {
          <GridItemHeadColumn >Event Name</GridItemHeadColumn>
             <GridItemHeadColumn >Event Date</GridItemHeadColumn>
             <GridItemHeadColumn></GridItemHeadColumn>
-            {events.map((e:EventListModel)=>{
+            {events?.map((e:EventListModel)=>{
                 return <>
                     <GridItem><GridItemImg src={e.imageUrl} alt={e.name}/></GridItem>
                     <GridItem>{e.name}</GridItem>
