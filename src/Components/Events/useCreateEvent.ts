@@ -1,9 +1,11 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { createEventAPI } from "../../Services/apiEvents";
 import { useState } from "react";
 
 const useCreateEvent = () => {
+    const queryClient = useQueryClient();
+         // Access React Query's Query Client
     const [isEventCreationTriggered, setIsEventCreationTriggered] = useState<boolean>(false);
     const [isEventCreatedSuccessfully, setIsEventCreatedSuccessfully] = useState<boolean>(false);
     const [isEventCreatedFailed, setIsEventCreatedFailed] = useState<boolean>(false);
@@ -13,6 +15,10 @@ const useCreateEvent = () => {
           toast.success("Event created successfully.");
           setIsEventCreationTriggered(true)
           setIsEventCreatedSuccessfully(true);
+           // Invalidate the "events" query to refetch the latest events
+      queryClient.invalidateQueries({
+        queryKey: ["events"]
+        });
         },
         onError: (error) => {
           toast.error(`Create failed: ${error.message}`);

@@ -10,6 +10,7 @@ import useCategories from '../Categories/useCategories';
 import LoadingSpinner from '../../UI/LoadingSpinner';
 import styled from 'styled-components';
 import { CategoryModel } from '../../Models/Category';
+import useDeleteEvent from './useDeleteEvent';
 
 type Props = {
     event:EventDetailsModel
@@ -108,12 +109,20 @@ const EditEventForm = ({event}: Props) => {
         resolver: yupResolver(eventFormSchema)
     });
     const { updateEvent, isLoading, error } = useEditEvent();
+    const { deleteEvent, isLoading: isLoadingDelete, error: errorDelete } = useDeleteEvent();
     const {categories, error:errorCategories, isLoading:isLoadingCategories} = useCategories();
+
     const submitHandler: SubmitHandler<EventEditModel> = (formValues) => {
         updateEvent(formValues);
     };
+
+    const deleteHandler = (e:any) =>{
+        deleteEvent(event.eventId);
+    }
+
     if (isLoading) return <LoadingSpinner/>
     if (isLoadingCategories) return <LoadingSpinner/>
+    if (isLoadingDelete) return <LoadingSpinner/>
   return (
     <div>
         <FormContainer>
@@ -179,11 +188,14 @@ const EditEventForm = ({event}: Props) => {
                     <Button type="submit" variation="primary">
                         Save Event
                     </Button>
-                    <Button type="button">
+                    <Button type="button" onClick={(e)=>deleteHandler(e)}>
                         Delete Event
                     </Button>
                 </ButtonGroup>
             </form>
+            {error && <ErrorMessage>{error.message}</ErrorMessage>}
+            {errorCategories && <ErrorMessage>{errorCategories.message}</ErrorMessage>}
+            {errorDelete && <ErrorMessage>{errorDelete.message}</ErrorMessage>}
         </FormContainer>
     </div>
   )

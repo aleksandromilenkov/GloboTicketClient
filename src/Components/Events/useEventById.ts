@@ -9,7 +9,7 @@ const useEventById = () => {
       data: event,
       error,
     } = useQuery({
-      queryKey:["event"],
+      queryKey:["event", eventId],
       queryFn: ()=>getEventByIdAPI(eventId!),
     });
     return [isLoading, event, error];

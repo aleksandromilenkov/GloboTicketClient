@@ -28,6 +28,10 @@ export const createEventAPI = async(eventToCreate: EventCreateModel) => {
             },
             body: JSON.stringify(eventToCreate)
         });
+        if (!resp.ok) {
+            const errorData = await resp.json(); // Parse error details (if any)
+            throw new Error(errorData[0] || `Error ${resp.status}: ${resp.statusText}`);
+        }
     }catch(error:any){
         throw new Error(error.response?.data.message || error.message);
     }
@@ -44,21 +48,25 @@ export const editEventAPI = async(eventToUpdate: EventEditModel) => {
             },
             body: JSON.stringify(eventToUpdate)
         });
+        if (!resp.ok) {
+            const errorData = await resp.json(); // Parse error details (if any)
+            throw new Error(errorData.message || `Error ${resp.status}: ${resp.statusText}`);
+        }
     }catch(error:any){
         throw new Error(error.response?.data.message || error.message);
     }
 }
 
-export const deleteEventAPI = async(eventId: number) => {
+export const deleteEventAPI = async(eventId: string) => {
     try{
-        const token = localStorage.getItem("GloboTicketToken");
+        // const token = localStorage.getItem("GloboTicketToken");
         const resp = await fetch(api+ eventId,{
             method: 'DELETE',
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${token}`, 
-            },
         });
+        if (!resp.ok) {
+            const errorData = await resp.json(); // Parse error details (if any)
+            throw new Error(errorData.message || `Error ${resp.status}: ${resp.statusText}`);
+        }
     }catch(error:any){
         throw new Error(error.response?.data.message || error.message);
     }

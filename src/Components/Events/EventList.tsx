@@ -40,14 +40,22 @@ const EventList = (props: Props) => {
          <GridItemHeadColumn >Event Name</GridItemHeadColumn>
             <GridItemHeadColumn >Event Date</GridItemHeadColumn>
             <GridItemHeadColumn></GridItemHeadColumn>
-            {events?.map((e:EventListModel)=>{
-                return <>
-                    <GridItem><GridItemImg src={e.imageUrl} alt={e.name}/></GridItem>
-                    <GridItem>{e.name}</GridItem>
-                    <GridItem>{new Date(e.date).toLocaleDateString()}</GridItem>
-                    <GridItem><Button><FaEdit onClick={()=> navigate(`/events/${e.eventId}`)}/></Button></GridItem>
-                </>
-            })}
+            {events?.map((e: EventListModel, idx:number) => {
+                    return (
+                        <React.Fragment key={idx}>
+                            <GridItem>
+                                <GridItemImg src={e.imageUrl} alt={e.name} />
+                            </GridItem>
+                            <GridItem>{e.name}</GridItem>
+                            <GridItem>{new Date(e.date).toLocaleDateString()}</GridItem>
+                            <GridItem>
+                                <Button onClick={() => navigate(`/events/${e.eventId}`)} >
+                                    <FaEdit />
+                                </Button>
+                            </GridItem>
+                        </React.Fragment>
+                    );
+                })}
         </EventGrid>
     </div>
   )
