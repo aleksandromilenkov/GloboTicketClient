@@ -15,3 +15,14 @@ export type EventCreateModel = {
     description?: string,
     categoryId: string,
 }
+
+export type EventEditModel = {
+    eventId: string,
+    name: string,
+    imageUrl?: string,
+    price: number,
+    date: Date,
+    artist?: string,
+    description?: string,
+    categoryId: string,
+}

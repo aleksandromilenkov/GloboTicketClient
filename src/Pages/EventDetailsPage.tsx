@@ -11,12 +11,14 @@ const EventDetailsPage = (props: Props) => {
     const [isLoading, event, error] = useEventById();
 
     if(isLoading) return <LoadingSpinner/>
-    
+    console.log(event);
     const isEventDetailsModel = (event: unknown): event is EventDetailsModel => {
         return (event as EventDetailsModel)?.name !== undefined;
     };
+    if (error) return <p>Error loading data.</p>;
   return (
-    <div>EventDetailsPage
+    <div>
+        <h2>Details for {isEventDetailsModel(event) && event.name} </h2>
         {isEventDetailsModel(event) && <EditEventForm event={event}/>}
     </div>
   )
