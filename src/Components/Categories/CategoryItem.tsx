@@ -50,14 +50,15 @@ const CategoryItem = (props: Props) => {
             <GridItemHeadColumn>Event Date</GridItemHeadColumn>
             <GridItemHeadColumn>Artist</GridItemHeadColumn>
             <GridItemHeadColumn>Price</GridItemHeadColumn>
-            {categoryEvents.map(ce=>{
+            {categoryEvents.length != 0 ? categoryEvents.map(ce=>{
                 return <>
                     <GridItem>{ce.name}</GridItem>
                     <GridItem>{new Date(ce.date).toLocaleDateString()}</GridItem>
                     <GridItem>{ce.artist}</GridItem>
                     <GridItem>${ce.price.toFixed(2)}</GridItem>
                 </>
-            })}
+            }) : <p>No events in this category so far.</p>}
+            {}
         </EventGrid>
     </CategoryItemContainer>
   )
