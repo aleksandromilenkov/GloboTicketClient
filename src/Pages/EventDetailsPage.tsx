@@ -4,6 +4,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 import useEventById from '../Components/Events/useEventById';
 import LoadingSpinner from '../UI/LoadingSpinner';
 import { EventDetailsModel } from '../Models/EventDetails';
+import Button from '../UI/Button';
+import { FaArrowLeft } from 'react-icons/fa'; 
 
 type Props = {}
 
@@ -23,7 +25,9 @@ const EventDetailsPage = (props: Props) => {
     <div>
         <h2>Details for {isEventDetailsModel(event) && event.name} </h2>
         {isEventDetailsModel(event) && <EditEventForm event={event}/>}
-        <button onClick={handleGoBack}>Back to Events</button>
+        <div style={{marginLeft:'1rem'}}>
+        <Button onClick={handleGoBack} size='xs'> <FaArrowLeft /> Back to Events</Button>
+        </div>
     </div>
   )
 }

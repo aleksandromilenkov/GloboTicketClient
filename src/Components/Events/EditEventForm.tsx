@@ -15,7 +15,7 @@ import useDeleteEvent from './useDeleteEvent';
 type Props = {
     event:EventDetailsModel
 }
-export const FormContainer = styled.div`
+ const FormContainer = styled.div`
   max-width: 800px;
   margin-left: 10px;
   padding: 2rem;
@@ -23,14 +23,14 @@ export const FormContainer = styled.div`
 `;
 
 
-export const FormField = styled.div`
+ const FormField = styled.div`
   display: flex;
   align-items: center;
   justify-content: left;
   margin-bottom: 1rem;
 `;
 
-export const Label = styled.label`
+ const Label = styled.label`
   flex: 1; /* Takes 1 part of the row space */
   text-align: right;
   font-weight: bold;
@@ -39,7 +39,7 @@ export const Label = styled.label`
   width: fit-content;
 `;
 
-export const Input = styled.input`
+ const Input = styled.input`
   flex: 2; /* Takes 2 parts of the row space */
   padding: 0.5rem;
   font-size: 1rem;
@@ -47,7 +47,7 @@ export const Input = styled.input`
   border-radius: 4px;
 `;
 
-export const Select = styled.select`
+ const Select = styled.select`
   flex: 2;
   padding: 0.5rem;
   font-size: 1rem;
@@ -55,13 +55,13 @@ export const Select = styled.select`
   border-radius: 4px;
 `;
 
-export const ErrorMessage = styled.span`
+ const ErrorMessage = styled.span`
   color: red;
   font-size: 0.875rem;
   margin-top: 0.25rem;
 `;
 
-export const ButtonGroup = styled.div`
+ const ButtonGroup = styled.div`
   display: flex;
   justify-content: center;
   gap: 1rem;
@@ -71,7 +71,7 @@ type ButtonVariation = 'primary';
 interface ButtonProps {
     variation?: ButtonVariation;
   }
-export const Button = styled.button<ButtonProps>`
+ const Button = styled.button<ButtonProps>`
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
   color: #fff;

@@ -1,7 +1,7 @@
 import styled, { css, DefaultTheme } from 'styled-components';
 
 // Define the possible values for size and variation
-type ButtonSize = 'small' | 'medium' | 'large';
+type ButtonSize = 'xs' | 'small' | 'medium' | 'large';
 type ButtonVariation = 'primary' | 'secondary' | 'danger';
 
 // Define the props interface for the Button
@@ -12,6 +12,16 @@ interface ButtonProps {
 
 // Define the styles for each size
 const sizes = {
+  xs: css`
+  font-size: 1 rem;
+  padding: 0.5rem 0.7rem;
+  font-weight: 600;
+  text-align: center;  
+@media (max-width: 670px) {
+  font-size: 0.8rem;
+  padding: 0.2rem 0.4rem;
+}
+`,
   small: css`
     font-size: 1.2rem;
     padding: 0.8rem 1rem;
