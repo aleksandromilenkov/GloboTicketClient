@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import useEventById from './useEventById';
 import { EventDetailsModel } from '../../Models/EventDetails';
 import { EventCreateModel, EventEditModel } from '../../Models/Event';
@@ -11,6 +11,7 @@ import LoadingSpinner from '../../UI/LoadingSpinner';
 import styled from 'styled-components';
 import { CategoryModel } from '../../Models/Category';
 import useDeleteEvent from './useDeleteEvent';
+import Modal from '../../UI/Modal';
 
 type Props = {
     event:EventDetailsModel
@@ -87,6 +88,51 @@ interface ButtonProps {
   }
 `;
 
+const ButtonGroupDelete = styled.div`
+display: flex;
+gap: 10px;
+justify-content: center; /* Align buttons horizontally */
+margin-top: 20px;
+`;
+
+const ConfirmButton = styled.button`
+background-color: #28a745; /* Green for confirm */
+color: white;
+border: none;
+padding: 10px 20px;
+font-size: 16px;
+border-radius: 5px;
+cursor: pointer;
+transition: background-color 0.3s ease;
+
+&:hover {
+  background-color: #218838; /* Darker green on hover */
+}
+
+&:active {
+  background-color: #1e7e34; /* Even darker green when pressed */
+}
+`;
+
+const CancelButton = styled.button`
+background-color: #dc3545; /* Red for cancel */
+color: white;
+border: none;
+padding: 10px 20px;
+font-size: 16px;
+border-radius: 5px;
+cursor: pointer;
+transition: background-color 0.3s ease;
+
+&:hover {
+  background-color: #c82333; /* Darker red on hover */
+}
+
+&:active {
+  background-color: #bd2130; /* Even darker red when pressed */
+}
+`;
+
 const eventFormSchema = yup.object().shape({
     eventId: yup.string().required("EventID is required"),
     name: yup.string().required("Event name is required").max(50, "Name must be at most 50 characters"),
@@ -105,6 +151,14 @@ const eventFormSchema = yup.object().shape({
   });
 
 const EditEventForm = ({event}: Props) => {
+    const [showModal, setShowModal] = useState(false);
+
+    const handleOpenModal = () => {
+        console.log('asd');
+        setShowModal(true);
+    }
+    const handleCloseModal = () => setShowModal(false);
+  
     const { register, formState: { errors }, handleSubmit, reset } = useForm<EventEditModel>({
         resolver: yupResolver(eventFormSchema)
     });
@@ -118,6 +172,7 @@ const EditEventForm = ({event}: Props) => {
 
     const deleteHandler = (e:any) =>{
         deleteEvent(event.eventId);
+        handleCloseModal();
     }
 
     if (isLoading) return <LoadingSpinner/>
@@ -188,7 +243,7 @@ const EditEventForm = ({event}: Props) => {
                     <Button type="submit" variation="primary">
                         Save Event
                     </Button>
-                    <Button type="button" onClick={(e)=>deleteHandler(e)}>
+                    <Button type="button" onClick={handleOpenModal}>
                         Delete Event
                     </Button>
                 </ButtonGroup>
@@ -197,6 +252,13 @@ const EditEventForm = ({event}: Props) => {
             {errorCategories && <ErrorMessage>{errorCategories.message}</ErrorMessage>}
             {errorDelete && <ErrorMessage>{errorDelete.message}</ErrorMessage>}
         </FormContainer>
+        <Modal show={showModal} onClose={handleCloseModal}>
+        <h2>Are you sure you want to delete this event?</h2>
+        <ButtonGroupDelete>
+            <ConfirmButton onClick={deleteHandler}>Confirm</ConfirmButton>
+            <CancelButton onClick={handleCloseModal}>Cancel</CancelButton>
+        </ButtonGroupDelete>
+      </Modal>
     </div>
   )
 }

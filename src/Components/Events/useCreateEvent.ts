@@ -15,6 +15,7 @@ const useCreateEvent = () => {
           toast.success("Event created successfully.");
           setIsEventCreationTriggered(true)
           setIsEventCreatedSuccessfully(true);
+          setIsEventCreatedFailed(false);
            // Invalidate the "events" query to refetch the latest events
       queryClient.invalidateQueries({
         queryKey: ["events"]
@@ -24,6 +25,7 @@ const useCreateEvent = () => {
           toast.error(`Create failed: ${error.message}`);
           setIsEventCreationTriggered(true)
           setIsEventCreatedFailed(true);
+          setIsEventCreatedSuccessfully(false);
         },
       });
     
