@@ -102,12 +102,7 @@ const eventFormSchema = yup.object().shape({
       .required("Event category is required")
       .notOneOf([""], "Please select a category"),
   });
-  const formatDate = (date: Date) => {
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0'); // Month is 0-indexed, so add 1
-    const day = String(date.getDate()).padStart(2, '0'); // Pad single-digit days
-    return `${year}-${month}-${day}`;
-  };
+
 const EditEventForm = ({event}: Props) => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm<EventEditModel>({
         resolver: yupResolver(eventFormSchema)
@@ -115,9 +110,7 @@ const EditEventForm = ({event}: Props) => {
     const { updateEvent, isLoading, error } = useEditEvent();
     const {categories, error:errorCategories, isLoading:isLoadingCategories} = useCategories();
     const submitHandler: SubmitHandler<EventEditModel> = (formValues) => {
-        const asd = updateEvent(formValues);
-        console.log(asd);
-        reset();
+        updateEvent(formValues);
     };
     if (isLoading) return <LoadingSpinner/>
     if (isLoadingCategories) return <LoadingSpinner/>
@@ -125,9 +118,10 @@ const EditEventForm = ({event}: Props) => {
     <div>
         <FormContainer>
             <form onSubmit={handleSubmit(submitHandler)}>
+                <input type="text" style={{display:"none"}} {...register("eventId")} value={event.eventId}/>
                 <FormField>
                     <Label htmlFor="name">Event Name</Label>
-                    <Input type="text" id="name" {...register("name")} value={event.name}/>
+                    <Input type="text" id="name" {...register("name")} defaultValue={event.name}/>
                     {errors.name && <ErrorMessage>{errors.name.message}</ErrorMessage>}
                 </FormField>
                 <FormField>
@@ -142,24 +136,24 @@ const EditEventForm = ({event}: Props) => {
                 </FormField>
                 <FormField>
                     <Label htmlFor="artist">Event Artist</Label>
-                    <Input type="text" id="artist" {...register("artist")} value={event.artist}/>
+                    <Input type="text" id="artist" {...register("artist")} defaultValue={event.artist}/>
                     {errors.artist && <ErrorMessage>{errors.artist.message}</ErrorMessage>}
                 </FormField>
                 <FormField>
                     <Label htmlFor="description">Event Description</Label>
-                    <Input type="text" id="description" {...register("description")} value={event.description}/>
+                    <Input type="text" id="description" {...register("description")} defaultValue={event.description}/>
                     {errors.description && (
                         <ErrorMessage>{errors.description.message}</ErrorMessage>
                     )}
                 </FormField>
                 <FormField>
                     <Label htmlFor="price">Event Price</Label>
-                    <Input type="number" id="price" {...register("price")} value={event.price}/>
+                    <Input type="number" id="price" {...register("price")} defaultValue={event.price}/>
                     {errors.price && <ErrorMessage>{errors.price.message}</ErrorMessage>}
                 </FormField>
                 <FormField>
                     <Label htmlFor="imageUrl">Event Image Url</Label>
-                    <Input type="url" id="imageUrl" {...register("imageUrl")} value={event.imageUrl}/>
+                    <Input type="url" id="imageUrl" {...register("imageUrl")} defaultValue={event.imageUrl}/>
                     {errors.imageUrl && (
                         <ErrorMessage>{errors.imageUrl.message}</ErrorMessage>
                     )}
@@ -169,7 +163,7 @@ const EditEventForm = ({event}: Props) => {
                     <Select
                         id="categoryId"
                         {...register("categoryId")}
-                        value={event.categoryId || ""}
+                        defaultValue={event.categoryId || ""}
                     >
                         <option value="">Select a category</option>
                         {categories?.map((category: CategoryModel) => (
