@@ -74,8 +74,13 @@ export const deleteEventAPI = async(eventId: string) => {
 
 export const exportEventsAPI = async () =>{
     try{
-        const fileCsv = await fetch(api + "export");
-        return fileCsv;
+        const response = await fetch(api + "export");
+        if (!response.ok) {
+            throw new Error('Failed to export events');
+          }
+        
+          const blob = await response.blob(); // Convert response to blob
+          return blob;
     }catch(error:any){
         throw new Error(error.response?.data.message || error.message);
     }
