@@ -10,6 +10,9 @@ const StyledAppLayout = styled.div`
   display: flex;
   flex-direction: row;
   min-height: 100vh; /* Full height of the viewport */
+   @media (max-width: 769px) {
+    flex-direction:column;
+  }
 `;
 
 const MainContent = styled.main`

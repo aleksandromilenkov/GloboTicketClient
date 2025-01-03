@@ -16,14 +16,13 @@ const ProtectedRoute = ({ children }: Props) => {
   console.log(user);
   useEffect(
     function () {
-    //   if (!isAuthenticated ) navigate("/login");
+      if (!isAuthenticated ) navigate("/login");
     },
     [isAuthenticated, navigate]
   );
 
-  // 2. If there is a user, render the app
-//   if (isAuthenticated) return children;
-return children;
+  //2. If there is a user, render the app
+  if (isAuthenticated) return children;
 };
 
 export default ProtectedRoute;

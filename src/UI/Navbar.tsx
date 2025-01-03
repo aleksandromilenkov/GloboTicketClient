@@ -18,6 +18,9 @@ const StyledHeaderMenu = styled.nav`
   background-color: #2d8f88;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 200px;
+   @media (max-width: 769px) {
+    width:100%;
+  }
 `;
 
 const NavLink = styled(RouterNavLink)`
@@ -37,6 +40,9 @@ const NavLink = styled(RouterNavLink)`
   &:hover {
     background-color: rgba(255, 255, 255, 0.2);
   }
+     @media (max-width: 769px) {
+    width: fit-content;
+  }
 `;
 
 const LogoutButton = styled.button`
@@ -53,34 +59,9 @@ const LogoutButton = styled.button`
   }
 `;
 
-const BurgerMenu = styled.div<{ isOpen: boolean }>`
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
 
-  div {
-    width: 25px;
-    height: 3px;
-    background-color: white;
-    margin: 4px 0;
-    transition: 0.4s;
-    transform: ${({ isOpen }) => (isOpen ? "rotate(45deg) translate(5px, 5px)" : "none")};
-  }
 
-  div:nth-child(2) {
-    opacity: ${({ isOpen }) => (isOpen ? "0" : "1")};
-  }
-
-  div:nth-child(3) {
-    transform: ${({ isOpen }) => (isOpen ? "rotate(-45deg) translate(5px, -5px)" : "none")};
-  }
-
-  @media (max-width: 768px) {
-    display: flex;
-  }
-`;
-
-const MenuItems = styled.div<{ isOpen: boolean }>`
+const MenuItems = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -89,8 +70,12 @@ const MenuItems = styled.div<{ isOpen: boolean }>`
   overflow: hidden;
   width:200px;
 
-  @media (min-width: 769px) {
-    
+  @media (max-width: 769px) {
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width:100%;
+    font-size:0.9rem;
   }
 `;
 
@@ -99,27 +84,16 @@ const Navbar = (props: Props) => {
      // 1. Load atuthenticated user
     const user = useSelector((state:RootState) => state.user);
     const isAuthenticated = !!user.token;
-    const [isOpen, setIsOpen] = useState(false);
-    const navigate = useNavigate();
-    // Function to close the menu when a link is clicked
-    const handleNavLinkClick = () => {
-      setIsOpen(false);
-    };
   
     return (
-      <StyledHeaderMenu>
-        <BurgerMenu isOpen={isOpen} onClick={() => setIsOpen(!isOpen)}>
-          <div />
-          <div />
-          <div />
-        </BurgerMenu>
-        <MenuItems isOpen={isOpen}>
+        <StyledHeaderMenu>
+        <MenuItems>
           {isAuthenticated && (<>
-              <NavLink to={"/home"} onClick={handleNavLinkClick} ><FaHome /> Home</NavLink>
-              <NavLink to={"/events"} onClick={handleNavLinkClick}><MdEvent /> Events</NavLink>
-              <NavLink to={"/categories"} onClick={handleNavLinkClick}><FaListAlt /> Categories</NavLink>
-        <NavLink to={"/addCategory"} onClick={handleNavLinkClick}><FaPlus /> Create Category</NavLink>
-        <NavLink to={"/sales"} onClick={handleNavLinkClick}><FaShoppingCart /> Sales</NavLink>
+              <NavLink to={"/home"}  ><FaHome /> Home</NavLink>
+              <NavLink to={"/events"} ><MdEvent /> Events</NavLink>
+              <NavLink to={"/categories"}><FaListAlt /> Categories</NavLink>
+              <NavLink to={"/addCategory"}><FaPlus /> Create Category</NavLink>
+              <NavLink to={"/sales"}><FaShoppingCart /> Sales</NavLink>
           </>
             )
             }

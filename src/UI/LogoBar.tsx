@@ -31,7 +31,7 @@ const LogoBar = (props: Props) => {
   return (
     <LogoBarContainer>
         <LogoContainer>
-            <Link to='/home'><Logo src="" alt="logo" /></Link>
+            <Link to='/home'><Logo src="logo.jpg" alt="logo" /></Link>
         </LogoContainer>
             <h1>GloboTicket Ticket Management</h1>
     </LogoBarContainer>

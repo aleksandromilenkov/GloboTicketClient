@@ -12,7 +12,7 @@ const LoginPage = (props: Props) => {
         navigate('/home'); // Navigate back to the events page
     };
   return (
-    <div>LoginPage
+    <div>
         <LoginForm/>
         <div style={{marginLeft:'1rem'}}>
         <Button onClick={handleGoBack} size='xs'> <FaArrowLeft /> Back to Home</Button>
