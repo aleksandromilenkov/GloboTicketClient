@@ -3,6 +3,8 @@ import { Outlet } from "react-router-dom";
 import styled from 'styled-components';
 import Navbar from "./Navbar";
 import LogoBar from "./LogoBar";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 
 const StyledAppLayout = styled.div`
   display: flex;
@@ -21,16 +23,16 @@ const AppLayoutContainer = styled.div`
 
 type Props = {};
 const AppLayout = (props: Props) => {
+   
   return (
     <AppLayoutContainer>
-
-      <LogoBar/>
-    <StyledAppLayout>
-      <Navbar />
-      <MainContent>
-        <Outlet />
-      </MainContent>
-    </StyledAppLayout>
+        <LogoBar/>
+        <StyledAppLayout>
+        <Navbar />
+        <MainContent>
+            <Outlet />
+        </MainContent>
+        </StyledAppLayout>
     </AppLayoutContainer>
   );
 };

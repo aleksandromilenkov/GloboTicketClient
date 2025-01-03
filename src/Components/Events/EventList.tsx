@@ -5,6 +5,7 @@ import Button from '../../UI/Button'
 import { FaEdit } from 'react-icons/fa';
 import { EventListModel } from '../../Models/Event';
 import { useNavigate } from 'react-router-dom';
+import Event from './Event';
 
 type Props = {}
 const EventGrid = styled.div`
@@ -42,18 +43,7 @@ const EventList = (props: Props) => {
             <GridItemHeadColumn></GridItemHeadColumn>
             {events?.map((e: EventListModel, idx:number) => {
                     return (
-                        <React.Fragment key={idx}>
-                            <GridItem>
-                                <GridItemImg src={e.imageUrl} alt={e.name} />
-                            </GridItem>
-                            <GridItem>{e.name}</GridItem>
-                            <GridItem>{new Date(e.date).toLocaleDateString()}</GridItem>
-                            <GridItem>
-                                <Button onClick={() => navigate(`/events/${e.eventId}`)} >
-                                    <FaEdit />
-                                </Button>
-                            </GridItem>
-                        </React.Fragment>
+                        <Event event={e}/>
                     );
                 })}
         </EventGrid>

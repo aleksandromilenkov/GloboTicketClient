@@ -4,6 +4,8 @@ import { Link, NavLink as RouterNavLink, useNavigate } from "react-router-dom";
 import { FaHome, FaUserAlt, FaHamburger,  FaListAlt, FaPlus, FaShoppingCart } from 'react-icons/fa'; // Example from FontAwesome
 import { MdEvent } from 'react-icons/md'; // Example from Material Design
 import { FiMenu } from 'react-icons/fi'; // Example from Feather
+import { useSelector } from 'react-redux';
+import { RootState } from '../store';
 
 type Props = {};
 
@@ -94,6 +96,9 @@ const MenuItems = styled.div<{ isOpen: boolean }>`
 
 
 const Navbar = (props: Props) => {
+     // 1. Load atuthenticated user
+    const user = useSelector((state:RootState) => state.user);
+    const isAuthenticated = !!user.token;
     const [isOpen, setIsOpen] = useState(false);
     const navigate = useNavigate();
     // Function to close the menu when a link is clicked
@@ -109,11 +114,15 @@ const Navbar = (props: Props) => {
           <div />
         </BurgerMenu>
         <MenuItems isOpen={isOpen}>
-          <NavLink to={"/home"} onClick={handleNavLinkClick} ><FaHome /> Home</NavLink>
-          <NavLink to={"/events"} onClick={handleNavLinkClick}><MdEvent /> Events</NavLink>
-          <NavLink to={"/categories"} onClick={handleNavLinkClick}><FaListAlt /> Categories</NavLink>
-          <NavLink to={"/addCategory"} onClick={handleNavLinkClick}><FaPlus /> Create Category</NavLink>
-          <NavLink to={"/sales"} onClick={handleNavLinkClick}><FaShoppingCart /> Sales</NavLink>
+          {isAuthenticated && (<>
+              <NavLink to={"/home"} onClick={handleNavLinkClick} ><FaHome /> Home</NavLink>
+              <NavLink to={"/events"} onClick={handleNavLinkClick}><MdEvent /> Events</NavLink>
+              <NavLink to={"/categories"} onClick={handleNavLinkClick}><FaListAlt /> Categories</NavLink>
+        <NavLink to={"/addCategory"} onClick={handleNavLinkClick}><FaPlus /> Create Category</NavLink>
+        <NavLink to={"/sales"} onClick={handleNavLinkClick}><FaShoppingCart /> Sales</NavLink>
+          </>
+            )
+            }
         </MenuItems>
       </StyledHeaderMenu>
   )

@@ -11,6 +11,10 @@ import CategoriesPage from "./Pages/CategoriesPage";
 import AddCategoryPage from "./Pages/AddCategoryPage";
 import SalesPage from "./Pages/SalesPage";
 import EventDetailsPage from "./Pages/EventDetailsPage";
+import ProtectedRoute from "./Utils/ProtectedRoute";
+import LoginPage from "./Pages/LoginPage";
+import RegisterForm from "./Components/Authentication/RegisterForm";
+import RegisterPage from "./Pages/RegisterPage";
 type Props = {};
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -28,12 +32,35 @@ const App = (props: Props) => {
     <Routes>
     <Route element={<AppLayout />}>
       <Route index element={<Navigate replace to="home" />} />
-      <Route path="home" element={<HomePage />} />
-      <Route path="events" element={<EventsPage />} />
-      <Route path="events/:eventId" element={<EventDetailsPage />} />
-      <Route path="categories" element={<CategoriesPage />} />
-      <Route path="addCategory" element={<AddCategoryPage />} />
-      <Route path="sales" element={<SalesPage />} />
+      <Route path="home" element={
+        <HomePage />
+        } />
+        <Route path="login" element={
+        <LoginPage />
+        } />
+         <Route path="register" element={
+        <RegisterPage />
+        } />
+      <Route path="events" element={
+        <ProtectedRoute>
+        <EventsPage />
+        </ProtectedRoute>} />
+      <Route path="events/:eventId" element={
+        <ProtectedRoute>
+        <EventDetailsPage />
+        </ProtectedRoute>} />
+      <Route path="categories" element={
+        <ProtectedRoute>
+        <CategoriesPage />
+        </ProtectedRoute>} />
+      <Route path="addCategory" element={
+        <ProtectedRoute>
+          <AddCategoryPage />
+        </ProtectedRoute>} />
+      <Route path="sales" element={
+        <ProtectedRoute>
+        <SalesPage />
+        </ProtectedRoute>} />
       <Route path="*" element={<PageNotFound />} />
       </Route>
     </Routes>
