@@ -1,74 +1,102 @@
-#GloboTicketClient
+GloboTicketClient
+Welcome to the GloboTicketClient, the frontend application for the GloboTicket Ticket Management System. This project serves as the client-side interface for the GloboTicket backend, which is implemented with Clean Architecture. For more details about the backend, visit the GloboTicket Ticket Management Backend Repository.
 
-This is the Client for the GloboTicket Clean Architecture Backend
+Table of Contents
+Features
+Technologies and Packages
+Setup and Installation
+Usage
+Screenshots
+Contributing
+License
+Features
+User Authentication: Register and log in to access the application.
+Event Management:
+View all events on the Events page.
+Sort events by category on the Categories page.
+Edit and delete events.
+Export events to an Excel file.
+Modern UI: Responsive and user-friendly interface using Styled Components.
+State Management: Centralized state with Redux Toolkit and React Query for efficient API data fetching and caching.
+Technologies and Packages
+This application is built with the following technologies and libraries:
 
-# Getting Started with Create React App
+Core Frameworks and Tools
+React: UI development library.
+TypeScript: Type-safe JavaScript for improved developer experience.
+React Router DOM: Declarative routing for React applications.
+State Management
+Redux Toolkit: Simplified state management with less boilerplate.
+React Query: Powerful data-fetching and caching.
+Form Management
+React Hook Form: Lightweight library for form handling.
+Yup: Schema validation for form inputs.
+Styling
+Styled Components: CSS-in-JS styling for React components.
+Font Awesome: Icons for a better visual experience.
+Utilities
+Axios: HTTP client for API requests.
+JWT Decode: Decoding JSON Web Tokens.
+React Hot Toast: Toast notifications.
+Testing
+React Testing Library: Testing utilities for React components.
+Jest DOM: Matchers for testing DOM nodes.
+Setup and Installation
+Follow these steps to run the GloboTicketClient on your local machine:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Prerequisites
+Node.js (v18 or higher)
+npm or yarn package manager
+Steps
+Clone the repository:
+bash
+Copy code
+git clone https://github.com/aleksandromilenkov/GloboTicketClient.git
+Navigate to the project directory:
+bash
+Copy code
+cd GloboTicketClient
+Install dependencies:
+bash
+Copy code
+npm install
+Create an .env file in the root directory and configure the environment variables. Example:
+bash
+Copy code
+REACT_APP_API_BASE_URL=https://localhost:7052/api
+Start the development server:
+bash
+Copy code
+npm start
+Open your browser and navigate to http://localhost:3000.
+Usage
+Register: Create a new account to access the application.
+Login: Use your credentials to log in.
+Explore Features:
+Navigate to the Events page to view all available events.
+Visit the Categories page to sort events by category.
+Edit or delete events as needed.
+Export event data to an Excel file for further analysis.
+Screenshots
+Add screenshots of key features or pages (e.g., Events page, Categories page, Login screen) to showcase the application visually.
 
-## Available Scripts
+Contributing
+Contributions are welcome! If you'd like to contribute:
 
-In the project directory, you can run:
+Fork the repository.
+Create a feature branch:
+bash
+Copy code
+git checkout -b feature/YourFeatureName
+Commit your changes:
+bash
+Copy code
+git commit -m "Add YourFeatureName"
+Push to your branch:
+bash
+Copy code
+git push origin feature/YourFeatureName
+Open a pull request.
+License
+This project is licensed under the MIT License. See the LICENSE file for details.
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
