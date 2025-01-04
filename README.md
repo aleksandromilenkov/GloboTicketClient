@@ -82,6 +82,32 @@ Open your browser and navigate to http://localhost:3000.
 
 ### Screenshots
 
+1. Home Page when not logged in:
+![HomePageNotLoggedIn](https://github.com/user-attachments/assets/ab0cc315-7934-4d2c-8019-9dff786c077f)
+
+2. Register Page:
+![RegisterPage](https://github.com/user-attachments/assets/49b0fb9a-f21f-4f9f-9eea-dcb03a8440ec)
+
+3. Login Page:
+   ![LoginPage](https://github.com/user-attachments/assets/6c6836b5-43e2-45a1-a1f1-8b9174d24842)
+
+4. Home Page when logged in:
+![HomePageLogedIn](https://github.com/user-attachments/assets/ce5662a7-8117-4cea-9cc6-6d6e5e7b4fc8)
+
+5. Events Page:
+   ![EventsPage](https://github.com/user-attachments/assets/b7d9989f-e4d7-40b9-a1f7-98c4bc76d2ab)
+
+6. Add New Event:
+ ![AddEvent](https://github.com/user-attachments/assets/a58e4ff9-b40f-425b-96dd-b5e70
+
+7. Edit Event:
+   ![EditEvent](https://github.com/user-attachments/assets/944368d0-d7a8-41ba-824b-5165a53ddfd8)
+
+8. Categories Page:
+![Categories](https://github.com/user-attachments/assets/9f34121f-6c04-4fb8-ac8f-5ce8b2ccbd51)
+
+9. Create New Category:
+ ![CreateCategory](https://github.com/user-attachments/assets/586e30ad-fcd1-4556-ac2b-788110f8f286)
 
 
 ### License
