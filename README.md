@@ -98,7 +98,7 @@ Open your browser and navigate to http://localhost:3000.
    ![EventsPage](https://github.com/user-attachments/assets/b7d9989f-e4d7-40b9-a1f7-98c4bc76d2ab)
 
 6. Add New Event:
- ![AddEvent](https://github.com/user-attachments/assets/a58e4ff9-b40f-425b-96dd-b5e70
+![AddEvent](https://github.com/user-attachments/assets/a52ddef1-1060-4c66-b0bb-1236497ae349)
 
 7. Edit Event:
    ![EditEvent](https://github.com/user-attachments/assets/944368d0-d7a8-41ba-824b-5165a53ddfd8)
