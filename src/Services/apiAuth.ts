@@ -11,6 +11,10 @@ export const loginAPI = async (appUser: LoginAppUser) =>{
               },
             body: JSON.stringify(appUser)
         });
+        if (!resp.ok) {
+            const errorData = await resp.json(); // Parse error details (if any)
+            throw new Error(errorData[0] || `Error ${resp.status}: ${resp.statusText}`);
+        }
         return await resp?.json();
     }catch(error:any){
         throw new Error(error.response?.data.message || error.message);
@@ -27,6 +31,10 @@ export const registerAPI = async (appUser: CreateAppUser) =>{
               },
             body: JSON.stringify(appUser)
         });
+        if (!resp.ok) {
+            const errorData = await resp.json(); // Parse error details (if any)
+            throw new Error(errorData[0] || `Error ${resp.status}: ${resp.statusText}`);
+        }
         return await resp?.json();
     }catch(error:any){
         throw new Error(error.response?.data.message || error.message);

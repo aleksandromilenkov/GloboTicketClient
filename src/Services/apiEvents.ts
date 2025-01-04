@@ -4,6 +4,10 @@ const api = "https://localhost:7052/api/Event/";
 export const getEventsAPI = async () =>{
     try{
         const events = await fetch(api);
+        if (!events.ok) {
+            const errorData = await events.json(); // Parse error details (if any)
+            throw new Error(errorData[0] || `Error ${events.status}: ${events.statusText}`);
+        }
         return await events?.json();
     }catch(error:any){
         throw new Error(error.response?.data.message || error.message);
@@ -12,6 +16,10 @@ export const getEventsAPI = async () =>{
 export const getEventByIdAPI = async (eventId: string) =>{
     try{
         const event = await fetch(api + eventId);
+        if (!event.ok) {
+            const errorData = await event.json(); // Parse error details (if any)
+            throw new Error(errorData[0] || `Error ${event.status}: ${event.statusText}`);
+        }
         return event.json();
     }catch(error:any){
         throw new Error(error.response?.data.message || error.message);

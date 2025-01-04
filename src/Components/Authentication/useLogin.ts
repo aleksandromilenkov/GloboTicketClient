@@ -16,8 +16,7 @@ function useLogin() {
     onSuccess: (user) => {
       console.log(user);
       if (user) {
-        
-        localStorage.setItem("tokenCarSellers", user?.token);
+        localStorage.setItem("globoTicketUser", user?.token);
         const userObj = {
           token: user?.token, 
           username: user?.userName,

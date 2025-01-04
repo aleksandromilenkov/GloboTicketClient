@@ -10,29 +10,16 @@ import { Label } from '../../UI/Label'
 import { Input } from '../../UI/Input'
 import { ErrorMessage } from '../../UI/ErrorMessage'
 import Button from '../../UI/Button'
+import LoadingSpinner from '../../UI/LoadingSpinner';
 
 type Props = {}
 type LoginAppUserForm = {
     email: string,
     password: string,
 }
-const userFromSchema = yup.object().shape({
-    email: yup
-    .string()
-    .email("Please enter a valid email address")
-    .max(200, "Email must be at most 200 characters")
-    .required("Email is required"),
-  password: yup
-    .string()
-    .min(6, "Password must be at least 6 characters")
-    .max(50, "Password must be at most 50 characters")
-    .matches(/[0-9]/, "Password must contain at least one digit")
-    .required("Password is required"),
-  });
+
 const LoginForm = (props: Props) => {
-    const { register, formState: { errors }, handleSubmit, reset } = useForm<LoginAppUserForm>({
-        resolver: yupResolver(userFromSchema)
-    });
+    const { register, formState: { errors }, handleSubmit, reset } = useForm<LoginAppUserForm>();
     const { login, isLoading, error } = useLogin();
     const submitHandler: SubmitHandler<LoginAppUser> = (formValues) => {
         const userToLogin = {
@@ -42,6 +29,7 @@ const LoginForm = (props: Props) => {
         login(userToLogin);
         reset();
     };
+    if(isLoading) return <LoadingSpinner/>
   return (
     <div>
         <FormContainer>
